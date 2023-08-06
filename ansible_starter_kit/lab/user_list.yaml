@@ -1,0 +1,17 @@
+users:
+  lisa:
+    username: lisa
+    uid: 1122
+    shell: /bin/bash
+    fav_foods:
+      - sushi
+      - ramen
+      - hotdog
+  rose:
+    username: rose
+    uid: 1123
+    shell: /bin/sh
+    fav_foods:
+      - sandwich
+      - ramen
+      - burger

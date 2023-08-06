@@ -1,0 +1,46 @@
+---
+- name: working with variables
+  hosts: localhost
+  become: false
+  vars_files:
+    - myvars.yaml
+  tasks:
+  - name: show me fav_color value
+    debug:
+      msg: My favorite color is {{ fav_color }}.
+
+  - name: show me fav_color value again
+    debug:
+      msg: "{{ fav_color }} is my favorite color."
+
+  - name: show port numbers
+    debug:
+      msg: "All the ports {{ port_nums }}"
+ 
+  - name: show port numbers
+    debug:
+      msg: "First port is {{ port_nums[0] }}"
+
+  - name: include user list
+    include_vars: user_list.yaml
+
+  - name: show the uid of lisa
+    debug:
+      msg: "UID of lisa is {{ users.lisa.uid }}"
+  
+  - name: show fav_foods of lisa
+    debug:
+      msg: "Lisa's favorite foods are {{ users.lisa.fav_foods }}"
+
+  - name: show the uid of lisa
+    debug:
+      msg: "UID of lisa is {{ users.lisa.uid }}"
+
+  - name: show the uid of lisa
+    debug:
+      msg: "UID of lisa is {{ users.lisa.uid }}"
+
+  - name: show the uid of rose
+    debug:
+      msg: "UID of lisa is {{ users['rose']['uid']}}"
+  

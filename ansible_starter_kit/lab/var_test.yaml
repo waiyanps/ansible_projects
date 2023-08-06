@@ -1,0 +1,40 @@
+---
+- name: var test
+  hosts: web db
+  become: false
+  gather_facts: true
+  vars:
+    fav_color: blue
+  vars_files:
+  - myvars.yaml
+  tasks:
+  - name: show custom message
+    debug:
+      msg: "{{ custom_message }}"
+
+  - name: favorite color 1
+    debug:
+      msg: "{{ fav_color }}"
+    vars:
+      fav_color: pink
+    
+  - name: favorite color 2
+    debug: 
+      msg: "{{ fav_color }}"
+  
+
+  - name: linux distribution
+    debug:
+      msg: "{{ ansible_distribution }}"
+    vars:
+      ansible_distribution: "Linux"
+
+  - name: write facts in file
+    copy:
+      content: "{{ ansible_facts | to_nice_yaml }}"
+      dest: /tmp/ansible_facts.yaml
+
+  - name: sda1 size
+    debug:
+      msg: "{{ ansible_facts['devices']['sda']['partitions']['sda1']['size'] }} "
+

@@ -1,0 +1,26 @@
+---
+- name: Assignment 3 
+  hosts: web db
+  tasks: 
+  - name: show facts
+    ansible.builtin.copy:
+      content: |
+       HOSTNAME = managed-{{ ansible_facts['hostname'] }}
+       KERNEL = {{ ansible_facts['kernel'] }}
+       DISTRIBUTION = {{ ansible_facts['distribution'] }}
+       CPU_CORES = {{ ansible_facts['processor_cores'] }}
+       MEMORY_TOTAL (MB) = {{ ansible_facts['memtotal_mb'] }}
+       DEFAULT_IPV4_ADDR = {{ ansible_facts['locally_reachable_ips']['ipv4'][3] }}
+        
+
+      dest: /etc/managed-{{ ansible_facts['hostname'] }}.txt
+      
+  - name: fetch files from managed nodes
+    ansible.builtin.fetch:
+      src: /etc/managed-{{ ansible_facts['hostname'] }}.txt
+      dest: /tmp/managed_nodes/
+      flat: yes
+
+
+     
+      

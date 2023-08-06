@@ -1,0 +1,9 @@
+---
+- name: create file
+  hosts: web
+  become: false
+  tasks:
+  - name: create a file
+    copy:
+      content: "Hello world!"
+      dest: /tmp/automate.txt

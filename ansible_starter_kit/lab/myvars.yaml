@@ -1,0 +1,9 @@
+fav_color: red
+port_nums:
+  - 21
+  - 22
+  - 23
+  - 25
+  - 80
+  - 443
+custom_message: "Ansible bootcamp"

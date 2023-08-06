@@ -1,0 +1,16 @@
+localhost ansible_connection=local custom_message="This is localhost"
+
+[web]
+rocky ansible_user=automate custom_message="This is from host vars"
+
+[web:vars]
+custom_message="Ansible Bootcamp"
+
+[db]
+ubuntu
+
+[dev:children]
+web
+db
+
+
